@@ -1,0 +1,61 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+p{
+    margin: 3%;
+    color: green;
+    font-weight: bolder;
+    font-size: 1.2em;
+}
+h1{
+    color: green;
+    margin-bottom: 10%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+#submit_button{
+    background-color:  green;
+    color: white;
+    border-radius: 25px;
+    padding: auto;
+    border: 1px solid green;
+    font-size: 1.5em;
+    margin-left: auto;
+    margin-left: auto;
+    text-align: center;
+}
+input{
+    padding: 10px;
+    font-size: 1em;
+    width: 70%;
+    border: 1px solid green;
+}
+form{
+    text-align: center;
+    width: 80%;
+}
+#n2{
+    padding: 20%;
+}
+
+@media (min-width: 768px) {
+    #container{
+        padding: 15px;
+        width: 500px;
+        height: auto;
+        border: 1px solid green;
+        margin-top: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        text-align: center;
+    }
+    
+
+h1 {
+    color: green;
+    margin-bottom: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+}

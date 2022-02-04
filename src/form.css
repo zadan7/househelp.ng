@@ -1,0 +1,35 @@
+.div{
+    width: 250px;
+    margin: 50px auto;
+}
+
+li{
+    display: inline-flex;
+    text-decoration: none;
+    flex-wrap: wrap;
+    margin: 0 auto;
+
+}
+ul{
+    display: flex;
+    width: 200px;
+    margin: 20px auto;
+    
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+@media (min-width: 768px) {
+    #container{
+        padding: 15px;
+        width: 500px;
+        height: auto;
+        border: 1px solid green;
+        margin-top: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        text-align: center;
+    }
+}

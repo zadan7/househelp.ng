@@ -1,0 +1,62 @@
+
+#joblistdiv p{
+    font-size: 10px;
+    /* display: inline-flex; */
+    flex-wrap: wrap;
+    color: black;
+}
+#joblistdiv{
+    width: 80%; 
+    margin: 20px auto;
+    border: 1px solid green;
+    display: block;
+    border-radius: 25px;
+    padding-bottom:4px;
+    overflow: hidden;
+
+
+
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+#joblistdiv h2{
+    font-size: 1em;
+    padding-left: 10px;
+    margin: 0;
+    border-bottom: 1px solid green ;
+
+    background-color:green;
+    color: white;
+    width: 100%;
+    /* overflow: hidden; */
+}
+#joblistdiv td{
+    font-size: 10px;
+    /* padding: 10px; */
+    font-weight: bold;
+    border: 0.5px solid lightgreen;
+}
+#joblistdiv td{
+    padding: 5px;
+    height: auto;
+}
+.job-apply-btn{
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    border: 0px solid;
+    /* background-color: rgb(10, 172, 10); */
+}
+.job-apply-btn:hover{
+    border: 0px solid;
+}
+
+
+table{
+    width: 100%;
+    /* padding: 5px; */
+    height: auto;
+}
+#cardheader{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

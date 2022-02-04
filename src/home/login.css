@@ -1,0 +1,56 @@
+form{
+    width: auto;
+    height: auto;
+    
+}
+.div{
+    width: 90%;
+    height: auto;
+    
+    
+}
+span{
+    font-size: 12px;
+}
+.spnn{
+    display: block;
+    margin-top: 25px;
+    color:"green";
+    padding:"20px";
+    margin:"25px";
+    text-align: right;
+    padding-right: 8%;
+    
+}
+p{
+    display: block;
+    /* border-bottom: 1px solid; */
+}
+input{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#submit_button_l {
+    color: green;
+    background-color: green;
+    color: white;
+    margin-top: 25px;
+    width: 60%;
+    border-radius: 25px;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 500px) {
+    form{
+        padding: 15px;
+        width: 500px;
+        height: auto;
+        border: 1px solid green;
+        margin-top: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        text-align: center;
+    }
+}

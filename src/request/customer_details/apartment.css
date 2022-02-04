@@ -1,0 +1,22 @@
+.apartdiv{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border:1px solid green;
+    padding: 10px;
+    text-align: center
+
+}
+
+@media (min-width: 768px) {
+    .apartdiv{
+        width: 500px;
+        height: auto;
+        border: 1px solid green;
+        margin-top: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        text-align: center;
+    }
+}

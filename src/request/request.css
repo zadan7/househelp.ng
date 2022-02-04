@@ -1,0 +1,100 @@
+button{
+    color: white;
+    background-color: green;
+    border: 1px solid green;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5em;
+    
+}
+
+
+.btn-1:hover{
+    color: green;
+    background-color: white;
+    border: 2px solid green;
+}
+
+#request_buttons{   
+    
+    text-align: center;
+    border: 1px solid green;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+h2{
+    text-align: center;
+    color: green;
+    padding: 8px;
+
+}
+#request{
+    padding: 8px;
+    text-align: center;
+    border: 1px solid green;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+form label{
+    display: block;
+    color: green;
+    margin: 4px;
+    padding: 4px;
+}
+
+form{
+    border: 1px solid green;
+    width: 90%;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.fresh{
+    color: white;
+    background: green;
+
+}
+.fresh:hover{
+    color: white;
+    background: green;
+}
+
+
+.fresh2{
+    color: green;
+    background-color: white;
+    border: 1px solid green;
+    border-radius: 25px;
+}
+#submitbtnpart{
+    color: green !important;
+    background: white !important;
+    width: 150px !important;
+    border-radius: 25px;
+
+}
+textarea{
+    border: 1px solid green;
+    
+}
+@media (min-width: 768px) {
+    #request{
+        padding: 15px;
+        width: 500px;
+        height: auto;
+        border: 1px solid green;
+        margin-top: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        text-align: center;
+    }
+    #logo-logo{
+        display: none;
+    }
+   
+}

@@ -1,0 +1,42 @@
+
+
+
+.Header{
+    width:"100%" ;
+    margin-Top:"0px";
+     padding-top:"0px" ;
+     margin-bottom:"10px";
+     border-Bottom:"2px solid green";
+     background-color: lightgreen;
+}
+#header14{
+    color: "lightgreen"; 
+    border-bottom:"2px solid green";
+    background-color: lightgreen;
+}
+#header14 img{
+    width: 100%;
+    max-Height: "auto";
+    margin-Left: "auto";
+    margin-Right: "auto"
+}
+
+
+@media (min-width: 768px) {
+  #header14{
+    width: "100%";
+    height:"auto";
+    text-align: "center";
+    color: "lightgreen"; 
+    border-bottom:"2px solid green";
+      
+  }
+  #header14 img{
+      width: 100%;
+      margin: 0 auto;
+  }
+  #divdivdiv{
+    width: 40%;
+    margin: 10px auto;
+  }
+}
