@@ -14,6 +14,7 @@ import {
   equalTo,
   onChildAdded,
   update,
+  push,
 } from "firebase/database";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -123,7 +124,7 @@ const Apply = ({ data }) => {
     );
     onChildAdded(getUserFromQuery, (snapshot) => {
       const snapRef = snapshot.ref;
-      update(snapRef, formData)
+      push(snapRef, formData)
         .then(() => {
           console.log("proposal updated");
         })
@@ -252,12 +253,10 @@ const Apply = ({ data }) => {
           initialValues={{ job_proposal: "" }}
           onSubmit={(values) =>
             handleProposal(data, {
-              house_help_data: {
-                ...values,
-                help_name: `${sessionStorage.getItem(
-                  "name"
-                )} ${sessionStorage.getItem("lastname")}`,
-              },
+              ...values,
+              help_name: `${sessionStorage.getItem(
+                "name"
+              )} ${sessionStorage.getItem("lastname")}`,
             })
           }
         >
