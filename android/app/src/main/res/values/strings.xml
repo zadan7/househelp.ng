@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">Househelp</string>
-    <string name="title_activity_main">Househelp</string>
-    <string name="package_name">househelp.ng</string>
-    <string name="custom_url_scheme">househelp.ng</string>
-</resources>
