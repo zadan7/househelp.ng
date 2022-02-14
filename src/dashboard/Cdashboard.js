@@ -4,7 +4,7 @@ import Header from "../Header";
 import "./dashboard.css";
 import Joblist from "./Joblist";
 import Scroll from "./Scroll";
-import {getDatabase,ref,onValue} from "firebase/database";
+import {getDatabase,ref,onValue,query} from "firebase/database";
 import Househelp from "./Househelp";
 
 
@@ -27,7 +27,7 @@ class  Cdashboard extends React.Component{
       componentDidMount(){
         var view = document.querySelector("#name")
         function load (){
-          if(sessionStorage.getItem("name")=="" || sessionStorage.getItem("name")==null ){
+          if(sessionStorage.getItem("cname")=="" || sessionStorage.getItem("cname")==null ){
             window.location.href="/Login";
           }
     
@@ -36,8 +36,7 @@ class  Cdashboard extends React.Component{
       }
         load();
   
-     
-  
+   
      
     }
   
@@ -45,14 +44,14 @@ class  Cdashboard extends React.Component{
      
       return(
         <div>
-          <h3 style={{textAlign:"center",padding:""}}>Hello, welcome  <span id="name"> {sessionStorage.getItem("name")}</span> </h3>
+          <h3 style={{textAlign:"center",padding:""}}>Hello, welcome  <span id="name"> {sessionStorage.getItem("cname")}</span> </h3>
           <p className="names" id="nn3"> </p>
         <div id="container">
   
         
           <div className="personal information" style={{textAlign:"left"}}>
-            <p className="pd">Fullname:{" "+sessionStorage.getItem("name")+""}  {sessionStorage.getItem("lastname")}<br></br></p>
-            <p className="pd">Phone Number: {""+sessionStorage.getItem("pnumber")}</p>
+            <p className="pd">Fullname:{" "+sessionStorage.getItem("cname")+""}  {sessionStorage.getItem("clastname")}<br></br></p>
+            <p className="pd">Phone Number: {""+sessionStorage.getItem("cemail")}</p>
   
   
   
@@ -84,7 +83,8 @@ class  Cdashboard extends React.Component{
       constructor(){
         super()
         this.state ={
-          data:[],  
+          data:[], 
+          arrayofapplications:[] 
         }
         
        }
@@ -94,19 +94,60 @@ class  Cdashboard extends React.Component{
       
    
       componentDidMount(){
+        const db = getDatabase();
+        const starCountRef = ref(db, "applied_jobs");
+        var arrayofapplications=[];
+        onValue(starCountRef, (snapshot) => {
+          
+    
+         snapshot.forEach((element)=>{ 
+          
+            var data =element.val();
+            if (data.clientEmail ==sessionStorage.getItem("cemail")){
+
+              arrayofapplications.push(data)
+            }
+           
+          })
+            
+          console.log(arrayofapplications)
+          this.setState({data:arrayofapplications})
+    
+        })
+  
+
+
+
+
+
+
+
+
+
         var fulljobsarray =[];
-       const db = getDatabase();
-       const starCountRef = ref(db, 'users/');
-       onValue(starCountRef, (snapshot) => {
+       const dbs = getDatabase();
+       const starCountRef2 = ref(dbs, "Fulltime_Request");
+      //  onValue(starCountRef2, (snapshot) => {
          
    
-         snapshot.forEach((element)=>{ 
-           fulljobsarray.push(element.val())  
-         })
+      //    snapshot.forEach((element)=>{  snapshot.forEach((element)=>{ 
+      //      fulljobsarray.push(element.val())  
+      //      var data =element.val();
+      //      if(data.firstname == "obuks"){
+          
+      //       for (const [key, value] of Object.entries(data)) {
+      //         console.log(`${key}: ${value}`);
+      //         console.log(data.key)
+      //       }
+
+      //      }
+      //    })
+      //      fulljobsarray.push(element.val())  
+      //    })
    
-         console.log(fulljobsarray)
-         this.setState({data:fulljobsarray,i:fulljobsarray.length})
-       })
+      //    console.log(fulljobsarray)
+      //    this.setState({data:fulljobsarray,i:fulljobsarray.length})
+      //  })
       }
    
     
@@ -119,15 +160,15 @@ class  Cdashboard extends React.Component{
                  <Househelp
                  buttondata={data}
                  index={index}
-                 firstname={data.firstname} 
-                 lastname={data.lastname}
-                 address={data.address} 
-                 state={data.SOO}
-                 pnumber={data.pnumber}
-                 jobtype={data.jobtype}
-                 email={data.email}
-                 date={data.date}
-                 Age={data.Age}/> 
+                 firstname={data.helpName} 
+                 lastname={data.helpName}
+                 address={data.proposal} 
+                 state={data.helpSOO}
+                 pnumber={data.helpNumber}
+                 jobtype={data.helpName}
+                 email={data.helpName}
+                 date={data.helpName}
+                 Age={data.helpName}/> 
        ))
              
            }

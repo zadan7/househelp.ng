@@ -19,6 +19,8 @@ import { CSSTransition } from "react-transition-group";
   sessionStorage.setItem("age",data.age)
   sessionStorage.setItem("jobtype",data.jobtype)
   sessionStorage.setItem("pnumber",data.pnumber)
+  sessionStorage.setItem("email",data.email)
+  console.log(data)
   renderDashboard()
  }
 
@@ -29,6 +31,7 @@ import { CSSTransition } from "react-transition-group";
   sessionStorage.setItem("age",data.age)
   sessionStorage.setItem("jobtype",data.jobtype)
   sessionStorage.setItem("pnumber",data.pnumber)
+  sessionStorage.setItem("cemail",data.email)
   renderCdashboard();
  }
 

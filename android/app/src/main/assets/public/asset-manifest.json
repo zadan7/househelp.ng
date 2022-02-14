@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a4e833a0.chunk.css",
+    "main.js": "/static/js/main.a380a94e.chunk.js",
+    "main.js.map": "/static/js/main.a380a94e.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.aa09fecd.js",
+    "runtime-main.js.map": "/static/js/runtime-main.aa09fecd.js.map",
+    "static/js/2.44c6668d.chunk.js": "/static/js/2.44c6668d.chunk.js",
+    "static/js/2.44c6668d.chunk.js.map": "/static/js/2.44c6668d.chunk.js.map",
+    "static/js/3.9f12883b.chunk.js": "/static/js/3.9f12883b.chunk.js",
+    "static/js/3.9f12883b.chunk.js.map": "/static/js/3.9f12883b.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.a4e833a0.chunk.css.map": "/static/css/main.a4e833a0.chunk.css.map",
+    "static/js/2.44c6668d.chunk.js.LICENSE.txt": "/static/js/2.44c6668d.chunk.js.LICENSE.txt",
+    "static/media/g_left.3133061b.png": "/static/media/g_left.3133061b.png",
+    "static/media/house.200b5e9f.png": "/static/media/house.200b5e9f.png",
+    "static/media/househelp1.48811c24.png": "/static/media/househelp1.48811c24.png",
+    "static/media/logo.4c7277c6.png": "/static/media/logo.4c7277c6.png",
+    "static/media/rr_left.fd49f105.png": "/static/media/rr_left.fd49f105.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.aa09fecd.js",
+    "static/js/2.44c6668d.chunk.js",
+    "static/css/main.a4e833a0.chunk.css",
+    "static/js/main.a380a94e.chunk.js"
+  ]
+}

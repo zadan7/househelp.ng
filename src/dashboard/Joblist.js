@@ -115,23 +115,53 @@ const Apply = ({ data }) => {
   // submit proposal
   const handleProposal = (userData, formData) => {
     const db = getDatabase();
-    const dbRef = ref(db, "Fulltime_Request");
+    const dbRef = ref(db, "applied_jobs");
+  console.log(userData,formData)
+    push(dbRef, {
+      
+      helpName:formData.help_name,
+      helpNumber:sessionStorage.getItem("pnumber"),
+      helpAge:sessionStorage.getItem("age"),
+      helpSOO:sessionStorage.getItem("SOO"),
+      
+      proposal:formData.job_proposal,
+      clientName:userData.firstname,
+      clientEmail:userData.email,
+      clientDescription:userData.description,
+      clientPnumber:userData.pnumber
+
+      
+    }).then(()=>{
+     
+      console.log("Data Sent Successfully ")
+      
+
+      
+    }).catch((error)=>{
+      
+      
+        
+
+    })
+
     //Fulltime_Request query logic
-    const getUserFromQuery = query(
-      dbRef,
-      orderByChild("firstname"),
-      equalTo(userData.firstname)
-    );
-    onChildAdded(getUserFromQuery, (snapshot) => {
-      const snapRef = snapshot.ref;
-      push(snapRef, formData)
-        .then(() => {
-          console.log("proposal updated");
-        })
-        .catch((error) => {
-          console.log(error.message);
-        });
-    });
+    // const getUserFromQuery = query(
+    //   dbRef,
+    //   orderByChild("firstname"),
+    //   equalTo(userData.firstname)
+    // );
+
+    // onChildAdded(getUserFromQuery, (snapshot) => {
+    //   const snapRef = snapshot.ref;
+    //   console.log(snapshot.ref,formData)
+    //   push(snapRef, formData)
+    //     .then(() => {
+    //       console.log("proposal updated");
+    //     })
+    //     .catch((error) => {
+    //       console.log(error.message);
+    //     });
+    // });
   };
 
   //todo: delete this useEffect hook?

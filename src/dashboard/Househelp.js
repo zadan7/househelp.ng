@@ -50,14 +50,14 @@ const Househelp =({firstname,state,address,lastname,pnumber,jobtype,email,index,
                  <th></th>
                   <tr>
                   <td>FullName:</td>
-                    <td>{firstname +"  "+ " "+lastname+" "+" "}</td>
+                    <td>{"  "+ " "+lastname+" "+" "}</td>
                   </tr>
                   <tr>
                     <td>Email</td>
                     <td>{email}</td>
                   </tr>
                   <tr>
-                    <td>Address:</td>
+                    <td>Proposal</td>
                     <td>{address +"  "+" "}</td>
                     
                   </tr>
@@ -89,9 +89,9 @@ const CApply =({data})=>{
 
   useEffect(()=>{
     var proposalbtn = document.querySelector("#proposalbtn")
-    proposalbtn.addEventListener("click",(e)=>{
-      e.preventDefault()
-    })
+    // proposalbtn.addEventListener("click",(e)=>{
+    //   e.preventDefault()
+    // })
   })
 
   return(
@@ -144,7 +144,7 @@ const CApply =({data})=>{
             
             <div>
                
-              <form>
+              {/* <form>
               <p>write Your Proposal</p>
               <div style={{display:"grid",gridTemplateColumns:"1fr 1fr"}}>
                 <div>
@@ -163,7 +163,7 @@ const CApply =({data})=>{
 
               <textarea rows="15" style={{padding:"5px"}}></textarea>
                 <button id="proposalbtn" type="submit">Submit proposal</button>
-              </form>
+              </form> */}
 
             </div>
             
