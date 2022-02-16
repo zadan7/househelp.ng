@@ -64,7 +64,7 @@ import { CSSTransition } from "react-transition-group";
 
 
         const db = getDatabase();
-        const starCountRefcustomers = ref(db, 'customers/');
+        const starCountRefcustomers = ref(db, 'Fulltime_Request/');
         
 
         onValue(starCountRefcustomers, (snapshot) => {
@@ -73,7 +73,7 @@ import { CSSTransition } from "react-transition-group";
 
             const data =element.val();
 
-           if(data.email === email && data.password === password ){
+           if(data.email === email && data.cpassword === password ){
 
              
            insertdata_cdashboard(data)

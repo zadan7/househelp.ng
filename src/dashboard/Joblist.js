@@ -15,6 +15,7 @@ import {
   onChildAdded,
   update,
   push,
+  onValue,
 } from "firebase/database";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -116,99 +117,83 @@ const Apply = ({ data }) => {
   const handleProposal = (userData, formData) => {
     const db = getDatabase();
     const dbRef = ref(db, "applied_jobs");
-  console.log(userData,formData)
-    push(dbRef, {
-      
-      helpName:formData.help_name,
-      helpNumber:sessionStorage.getItem("pnumber"),
-      helpAge:sessionStorage.getItem("age"),
-      helpSOO:sessionStorage.getItem("SOO"),
-      
-      proposal:formData.job_proposal,
-      clientName:userData.firstname,
-      clientEmail:userData.email,
-      clientDescription:userData.description,
-      clientPnumber:userData.pnumber
 
-      
-    }).then(()=>{
-     
-      console.log("Data Sent Successfully ")
-      
+  function checkifuserhasappliedbefore(counter){
 
+
+    if(counter>0){
+
+      console.log("you have applied to this Job before")
+
+    }else{
+      var today = new Date();
+            var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            var dateTime = date+' '+time;
+      push(dbRef, {
       
-    }).catch((error)=>{
-      
-      
+        helpName:formData.help_name,
+        helpNumber:sessionStorage.getItem("pnumber"),
+        helpAge:sessionStorage.getItem("age"),
+        helpSOO:sessionStorage.getItem("SOO"),
+        proposal:formData.job_proposal,
+        clientName:userData.firstname,
+        clientEmail:userData.email,
+        clientDescription:userData.description,
+        clientPnumber:userData.pnumber,
+        proposalDate:dateTime
+  
         
+      }).then(()=>{
+       
+        console.log("Data Sent Successfully ")
+        
+  
+        
+      }).catch((error)=>{
+        
+        
+          
+  
+      })
+    }
+   
 
-    })
+  }
+  checkifuserhasappliedbefore(sessionStorage.getItem("counter"))
+   
 
-    //Fulltime_Request query logic
-    // const getUserFromQuery = query(
-    //   dbRef,
-    //   orderByChild("firstname"),
-    //   equalTo(userData.firstname)
-    // );
-
-    // onChildAdded(getUserFromQuery, (snapshot) => {
-    //   const snapRef = snapshot.ref;
-    //   console.log(snapshot.ref,formData)
-    //   push(snapRef, formData)
-    //     .then(() => {
-    //       console.log("proposal updated");
-    //     })
-    //     .catch((error) => {
-    //       console.log(error.message);
-    //     });
-    // });
   };
 
-  //todo: delete this useEffect hook?
+  
   useEffect(() => {
     const db = getDatabase();
-    const starCountRefcustomers = ref(db, "customers/");
+    // const starCountRefcustomers = ref(db, "customers/");
+
+    const starCountRefapplied = ref(db, "applied_jobs/");
     var customerdata = [];
+    var counter= 0;
 
-    // todo: delete this function?
-    // function findwheretopostdata() {
-    //   onValue(starCountRefcustomers, (snapshot) => {
-    //     snapshot.forEach((element) => {
-    //       const data = element.val();
+    onValue(starCountRefapplied,(snapshot)=>{
+      snapshot.forEach((element)=>{
+        var datas =element.val();
 
-    //       if (data.email == "sadam@gmail.com") {
-    //         console.log(data.email);
-    //         element = {
-    //           cpassword: "1234567890",
-    //           date: "2022-1-25 0:10:19",
-    //           email: "sadam@gmail.com",
-    //           firstname: "gandan",
-    //           lastname: "umaru",
-    //           middlename: "love",
-    //           password: "1234567890",
-    //           type: "customer",
-    //         };
+        if(datas.helpNumber == sessionStorage.getItem("pnumber") && datas.clientEmail == data.email){
+          console.log(data.email)
+          counter=counter+1;
+          console.log(counter)
+        }else{
+          
+        }
+        console.log(datas.helpNumber,sessionStorage.getItem("pnumber"),datas.clientEmail,data.email)
+        console.log(counter)
+        sessionStorage.setItem("counter",counter)
+      }
+      
 
-    //         element.value = {
-    //           cpassword: "1234567890",
-    //           date: "2022-1-25 0:10:19",
-    //           email: "sadam@gmail.com",
-    //           firstname: "gandan",
-    //           lastname: "umaru",
-    //           middlename: "love",
-    //           password: "1234567890",
-    //           type: "customer",
-    //         };
-    //         console.log(element);
-    //         console.log();
-    //       } else {
-    //         console.log("null");
-    //       }
+      )
+    })
 
-    //       customerdata.push(data);
-    //     });
-    //   });
-    // }
   });
 
   return (

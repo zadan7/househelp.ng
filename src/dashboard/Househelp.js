@@ -54,7 +54,7 @@ const Househelp =({firstname,state,address,lastname,pnumber,jobtype,email,index,
                   </tr>
                   <tr>
                     <td>Email</td>
-                    <td>{email}</td>
+                    <td>{}</td>
                   </tr>
                   <tr>
                     <td>Proposal</td>
@@ -102,7 +102,7 @@ const CApply =({data})=>{
 
             <div id="joblistdiv" style={jobliststyle} >
               <div id="cardheader" style={{width:"100%", color:"green",gridTemplateColumns:"1fr"}}> 
-              <h2 style={{textAlign:"left"}}>State: {data.state}</h2>
+              <h2 style={{textAlign:"left"}}>State: {data.helpSOO}</h2>
               </div>
               
               <div id="card-details">
@@ -110,15 +110,15 @@ const CApply =({data})=>{
                  <th></th>
                   <tr>
                   <td>FullName:</td>
-                    <td>{data.firstname +"  "+ " "+data.lastname+" "+" "}</td>
+                    <td>{data.helpName }</td>
                   </tr>
                   <tr>
                     <td>Email</td>
-                    <td>{data.email}</td>
+                    <td>{data.helpEmail}</td>
                   </tr>
                   <tr>
-                    <td>Address:</td>
-                    <td>{data.address +"  "+" "}</td>
+                    <td>Proposal</td>
+                    <td>{data.proposal+"  "+" "}</td>
                     
                   </tr>
                   <tr>

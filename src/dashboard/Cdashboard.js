@@ -127,27 +127,7 @@ class  Cdashboard extends React.Component{
         var fulljobsarray =[];
        const dbs = getDatabase();
        const starCountRef2 = ref(dbs, "Fulltime_Request");
-      //  onValue(starCountRef2, (snapshot) => {
-         
-   
-      //    snapshot.forEach((element)=>{  snapshot.forEach((element)=>{ 
-      //      fulljobsarray.push(element.val())  
-      //      var data =element.val();
-      //      if(data.firstname == "obuks"){
-          
-      //       for (const [key, value] of Object.entries(data)) {
-      //         console.log(`${key}: ${value}`);
-      //         console.log(data.key)
-      //       }
-
-      //      }
-      //    })
-      //      fulljobsarray.push(element.val())  
-      //    })
-   
-      //    console.log(fulljobsarray)
-      //    this.setState({data:fulljobsarray,i:fulljobsarray.length})
-      //  })
+      //  onValue(starCountRef2, (snapshot) => 
       }
    
     
@@ -166,7 +146,7 @@ class  Cdashboard extends React.Component{
                  state={data.helpSOO}
                  pnumber={data.helpNumber}
                  jobtype={data.helpName}
-                 email={data.helpName}
+                 email={data.helpNumber}
                  date={data.helpName}
                  Age={data.helpName}/> 
        ))
