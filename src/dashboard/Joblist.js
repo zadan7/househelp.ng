@@ -19,6 +19,7 @@ import {
 } from "firebase/database";
 import { Formik } from "formik";
 import * as yup from "yup";
+import emailjs from "@emailjs/browser";
 
 const Joblist = ({
   firstname,
@@ -118,82 +119,105 @@ const Apply = ({ data }) => {
     const db = getDatabase();
     const dbRef = ref(db, "applied_jobs");
 
-  function checkifuserhasappliedbefore(counter){
+    //! sadam always use camel casing for function names and stop mixing normal functions with arrow functions it is not proper .
+    //! sadam stop mixing normal functions with arrow functions it is not proper for uniformity sake.
 
+    function checkifuserhasappliedbefore(counter) {
+      if (counter > 0) {
+        console.log("you have applied to this Job before");
+      } else {
+        var today = new Date();
+        var date =
+          today.getFullYear() +
+          "-" +
+          (today.getMonth() + 1) +
+          "-" +
+          today.getDate();
+        var time =
+          today.getHours() +
+          ":" +
+          today.getMinutes() +
+          ":" +
+          today.getSeconds();
+        var dateTime = date + " " + time;
+        push(dbRef, {
+          helpName: formData.help_name,
+          helpNumber: sessionStorage.getItem("pnumber"),
+          helpAge: sessionStorage.getItem("age"),
+          helpSOO: sessionStorage.getItem("SOO"),
+          proposal: formData.job_proposal,
+          clientName: userData.firstname,
+          clientEmail: userData.email,
+          clientDescription: userData.description,
+          clientPnumber: userData.pnumber,
+          proposalDate: dateTime,
+        })
+          .then(() => {
+            console.log("Data Sent Successfully ");
 
-    if(counter>0){
+            //? email js integration
+            var templateParams = {
+              client_name: `${userData.firstname} ${userData.lastname}`,
+              client_email: userData.email,
+              proposal_message: formData.job_proposal,
+              help_name: formData.help_name,
+              help_email: sessionStorage.getItem("email"),
+            };
 
-      console.log("you have applied to this Job before")
-
-    }else{
-      var today = new Date();
-            var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-            var dateTime = date+' '+time;
-      push(dbRef, {
-      
-        helpName:formData.help_name,
-        helpNumber:sessionStorage.getItem("pnumber"),
-        helpAge:sessionStorage.getItem("age"),
-        helpSOO:sessionStorage.getItem("SOO"),
-        proposal:formData.job_proposal,
-        clientName:userData.firstname,
-        clientEmail:userData.email,
-        clientDescription:userData.description,
-        clientPnumber:userData.pnumber,
-        proposalDate:dateTime
-  
-        
-      }).then(()=>{
-       
-        console.log("Data Sent Successfully ")
-        
-  
-        
-      }).catch((error)=>{
-        
-        
-          
-  
-      })
+            emailjs
+              .send(
+                process.env.REACT_APP_SERVICE_ID,
+                process.env.REACT_APP_TEMPLATE_ID,
+                templateParams
+              )
+              .then(
+                function (response) {
+                  console.log("SUCCESS!", response.status, response.text);
+                },
+                function (error) {
+                  console.log("FAILED...", error);
+                }
+              );
+          })
+          .catch((error) => {
+            //! you caught the error object but did not do anything with it
+          });
+      }
     }
-   
-
-  }
-  checkifuserhasappliedbefore(sessionStorage.getItem("counter"))
-   
-
+    checkifuserhasappliedbefore(sessionStorage.getItem("counter"));
   };
 
-  
   useEffect(() => {
     const db = getDatabase();
     // const starCountRefcustomers = ref(db, "customers/");
 
     const starCountRefapplied = ref(db, "applied_jobs/");
     var customerdata = [];
-    var counter= 0;
+    var counter = 0;
 
-    onValue(starCountRefapplied,(snapshot)=>{
-      snapshot.forEach((element)=>{
-        var datas =element.val();
+    onValue(starCountRefapplied, (snapshot) => {
+      snapshot.forEach((element) => {
+        var datas = element.val();
 
-        if(datas.helpNumber == sessionStorage.getItem("pnumber") && datas.clientEmail == data.email){
-          console.log(data.email)
-          counter=counter+1;
-          console.log(counter)
-        }else{
-          
+        if (
+          datas.helpNumber == sessionStorage.getItem("pnumber") &&
+          datas.clientEmail == data.email
+        ) {
+          console.log(data.email);
+          counter = counter + 1;
+          console.log(counter);
+        } else {
         }
-        console.log(datas.helpNumber,sessionStorage.getItem("pnumber"),datas.clientEmail,data.email)
-        console.log(counter)
-        sessionStorage.setItem("counter",counter)
-      }
-      
-
-      )
-    })
-
+        console.log(
+          datas.helpNumber,
+          sessionStorage.getItem("pnumber"),
+          datas.clientEmail,
+          data.email
+        );
+        console.log(counter);
+        sessionStorage.setItem("counter", counter);
+      });
+    });
   });
 
   return (
