@@ -1,3 +1,4 @@
+//! please remove all unused imports in all files too many annoying console messages
 import React from "react";
 import reactDom from "react-dom";
 import Dashboard from "./dashboard";
@@ -21,6 +22,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import emailjs from "@emailjs/browser";
 
+//! remove all unused variables as well the console is too dirty and confusing
 const Joblist = ({
   firstname,
   state,
