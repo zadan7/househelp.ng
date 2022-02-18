@@ -107,6 +107,8 @@ const Joblist = ({
   );
 };
 
+console.log(process.env.REACT_APP_USER_ID);
+
 const Apply = ({ data }) => {
   // yup validation schema
   const schema = yup.object().shape({
@@ -121,8 +123,27 @@ const Apply = ({ data }) => {
     const db = getDatabase();
     const dbRef = ref(db, "applied_jobs");
 
-    //! sadam always use camel casing for function names and stop mixing normal functions with arrow functions it is not proper .
-    //! sadam stop mixing normal functions with arrow functions it is not proper for uniformity sake.
+    //! always use camel casing for function names and stop mixing normal functions with arrow functions it is not proper .
+    //! stop mixing normal functions with arrow functions it is not proper for uniformity sake.
+
+    //? email js integration
+    var templateParams = {
+      client_name: `${userData.firstname} ${userData.lastname}`,
+      client_email: "abbaadamu302@gmail.com",
+      proposal_message: formData.job_proposal,
+      help_name: formData.help_name,
+      help_email: sessionStorage.getItem("email"),
+    };
+
+    emailjs
+      .send(
+        process.env.REACT_APP_SERVICE_ID,
+        process.env.REACT_APP_TEMPLATE_ID,
+        templateParams,
+        process.env.REACT_APP_USER_ID
+      )
+      .then((res) => console.log("email sent successfully" + res.status))
+      .catch((error) => console.log(error));
 
     function checkifuserhasappliedbefore(counter) {
       if (counter > 0) {
@@ -149,37 +170,15 @@ const Apply = ({ data }) => {
           helpSOO: sessionStorage.getItem("SOO"),
           proposal: formData.job_proposal,
           clientName: userData.firstname,
-          clientEmail: userData.email,
-          clientDescription: userData.description,
+
+          //! line 174 and 175 are null for some reason so your push fails
+          // clientEmail: userData.email,
+          // clientDescription: userData.description,
           clientPnumber: userData.pnumber,
           proposalDate: dateTime,
         })
           .then(() => {
             console.log("Data Sent Successfully ");
-
-            //? email js integration
-            var templateParams = {
-              client_name: `${userData.firstname} ${userData.lastname}`,
-              client_email: userData.email,
-              proposal_message: formData.job_proposal,
-              help_name: formData.help_name,
-              help_email: sessionStorage.getItem("email"),
-            };
-
-            emailjs
-              .send(
-                process.env.REACT_APP_SERVICE_ID,
-                process.env.REACT_APP_TEMPLATE_ID,
-                templateParams
-              )
-              .then(
-                function (response) {
-                  console.log("SUCCESS!", response.status, response.text);
-                },
-                function (error) {
-                  console.log("FAILED...", error);
-                }
-              );
           })
           .catch((error) => {
             //! you caught the error object but did not do anything with it
