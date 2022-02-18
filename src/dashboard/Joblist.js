@@ -129,6 +129,7 @@ const Apply = ({ data }) => {
     //? email js integration
     var templateParams = {
       client_name: `${userData.firstname} ${userData.lastname}`,
+      //Todo: change below client_email value to clients email i.e userData.email the value below was used for testing
       client_email: "abbaadamu302@gmail.com",
       proposal_message: formData.job_proposal,
       help_name: formData.help_name,
