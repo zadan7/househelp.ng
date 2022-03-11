@@ -341,6 +341,22 @@ class Fulltime extends React.Component{
   
 
   componentDidMount() {
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+    var arrayofemails=[];
+    const starCountRef = ref(db, 'Fulltime_Request/');  
+    
+    
+
+    onValue(starCountRef,(snapshot)=>{
+
+    snapshot.forEach((element)=>{
+      var data = element.val();
+
+      arrayofemails.push(data.email)
+     })
+     console.log(arrayofemails)
+   })
     
      var fullbtn = document.querySelector("#full-btn")
      
@@ -363,17 +379,49 @@ class Fulltime extends React.Component{
        middlename      = document.querySelector("#middlename").value
        password = document.querySelector("#password").value
        cpassword = document.querySelector("#cpassword").value
+
+       var boolean=0;
+
+       for(var i=0;i<=arrayofemails.length;i++){
+         if(arrayofemails[i]==email){
+           boolean++;
+         }
+
+       }
+       console.log(boolean)
+
        if(Firstname !=="" && lastname !=="" && Phonenumber !=="" && Address !=="" && State!=="" && email !=="" && cpassword == password){
         console.log(Firstname,lastname,Phonenumber,Address,State,kidsnum,email)
-        var today = new Date();
-            var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-            var dateTime = date+' '+time;
-            sessionStorage.setItem("name1", document.querySelector("#firstname").value +" "+ document.querySelector("#lastname").value)
-    sessionStorage.setItem("pnumber1", document.querySelector("#phonenumber").value)
-    sessionStorage.setItem("email1", document.querySelector("#email2").value)
-        writeUserData( Firstname, lastname,Phonenumber,Address,State,Jobtype,email,middlename,dateTime,Description,kidsnum,password,cpassword)
-        renderFullPaymentpage()
+
+        
+        if (boolean<=2){
+          
+          var today = new Date();
+          var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+          var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+          var dateTime = date+' '+time;
+          sessionStorage.setItem("name1", document.querySelector("#firstname").value +" "+ document.querySelector("#lastname").value)
+          sessionStorage.setItem("pnumber1", document.querySelector("#phonenumber").value)
+          sessionStorage.setItem("email1", document.querySelector("#email2").value)
+
+
+
+          
+
+
+      writeUserData( Firstname, lastname,Phonenumber,Address,State,Jobtype,email,middlename,dateTime,Description,kidsnum,password,cpassword)
+      renderFullPaymentpage()
+          
+  
+         }else{
+          labels.style.color="red"
+          labels.textContent ="email already in use";
+         }
+
+
+
+
+       
        }else{
          labels.style.color="red"
          labels.textContent ="empty field detected";

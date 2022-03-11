@@ -6,6 +6,8 @@ import Joblist from "./Joblist";
 import Scroll from "./Scroll";
 import {getDatabase,ref,onValue,query} from "firebase/database";
 import Househelp from "./Househelp";
+import Login from "../home/Login";
+import reactDom from "react-dom";
 
 
 
@@ -25,7 +27,25 @@ class  Cdashboard extends React.Component{
     
      
       componentDidMount(){
+
+        var logoutbtn = document.querySelector("#logout")
+        function logout (){
+          console.log("clicked")
+          sessionStorage.setItem("cname",'')
+          sessionStorage.setItem("clastname", null);
+          sessionStorage.setItem("cemail", null);
+          sessionStorage.setItem("age", null);
+          sessionStorage.setItem("jobtype", null);
+          sessionStorage.setItem("pnumber", null);
+          sessionStorage.setItem("cemail", null);   
+          
+          renderLogin();
+        }
+
+        logoutbtn.addEventListener("click",logout)
         var view = document.querySelector("#name")
+
+
         function load (){
           if(sessionStorage.getItem("cname")=="" || sessionStorage.getItem("cname")==null ){
             window.location.href="/Login";
@@ -44,6 +64,7 @@ class  Cdashboard extends React.Component{
      
       return(
         <div>
+          <p style={{textAlign:"right"}} id="logout">Logout</p>
           <h3 style={{textAlign:"center",padding:""}}>Hello, welcome  <span id="name"> {sessionStorage.getItem("cname")}</span> </h3>
           <p className="names" id="nn3"> </p>
         <div id="container">
@@ -164,5 +185,13 @@ class  Cdashboard extends React.Component{
    }
    }
    
+   function renderLogin(){
+    reactDom.render(
+      <React.StrictMode>
+    <Header />
+    <Login />
+  </React.StrictMode>,document.querySelector("#root")
+    )
+  }
 
     export default Cdashboard;

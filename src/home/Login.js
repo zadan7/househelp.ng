@@ -14,6 +14,9 @@ import { CSSTransition } from "react-transition-group";
 
 //! too much use of querySelectors, you can use a normal HTML form tag and call the onSubmit event to capture form inputs for some logic
 
+
+//no need for emailJs in login page we need emailJS on submission of guarantors form, househelp request form and fulltime request.
+
 function insertdata_dashboard(data) {
   sessionStorage.setItem("name", data.firstname);
   sessionStorage.setItem("lastname", data.lastname);

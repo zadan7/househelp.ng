@@ -23,6 +23,7 @@ import * as yup from "yup";
 import emailjs from "@emailjs/browser";
 
 //! remove all unused variables as well the console is too dirty and confusing
+// all variables are usefull
 const Joblist = ({
   firstname,
   state,
@@ -130,7 +131,7 @@ const Apply = ({ data }) => {
     var templateParams = {
       client_name: `${userData.firstname} ${userData.lastname}`,
       //Todo: change below client_email value to clients email i.e userData.email the value below was used for testing
-      client_email: "abbaadamu302@gmail.com",
+      client_email: data.email,
       proposal_message: formData.job_proposal,
       help_name: formData.help_name,
       help_email: sessionStorage.getItem("email"),
@@ -183,6 +184,7 @@ const Apply = ({ data }) => {
           })
           .catch((error) => {
             //! you caught the error object but did not do anything with it
+            console.log("data wasnt sent " , error)
           });
       }
     }
@@ -205,18 +207,11 @@ const Apply = ({ data }) => {
           datas.helpNumber == sessionStorage.getItem("pnumber") &&
           datas.clientEmail == data.email
         ) {
-          console.log(data.email);
-          counter = counter + 1;
-          console.log(counter);
+          
         } else {
         }
-        console.log(
-          datas.helpNumber,
-          sessionStorage.getItem("pnumber"),
-          datas.clientEmail,
-          data.email
-        );
-        console.log(counter);
+       
+       
         sessionStorage.setItem("counter", counter);
       });
     });

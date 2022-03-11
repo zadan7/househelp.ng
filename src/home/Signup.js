@@ -86,6 +86,7 @@ const firebaseConfig = {
 
       arrayofemails.push(data.email)
      })
+     console.log(arrayofemails)
    })
   
 
