@@ -21,6 +21,8 @@ import {
 import { Formik } from "formik";
 import * as yup from "yup";
 import emailjs from "@emailjs/browser";
+import verified from "../imgs/check.png"
+import error from "../imgs/error.png";
 
 //! remove all unused variables as well the console is too dirty and confusing
 // all variables are usefull
@@ -137,20 +139,40 @@ const Apply = ({ data }) => {
       help_email: sessionStorage.getItem("email"),
     };
 
-    emailjs
-      .send(
-        process.env.REACT_APP_SERVICE_ID,
-        process.env.REACT_APP_TEMPLATE_ID,
-        templateParams,
-        process.env.REACT_APP_USER_ID
-      )
-      .then((res) => console.log("email sent successfully" + res.status))
-      .catch((error) => console.log(error));
+   
 
     function checkifuserhasappliedbefore(counter) {
       if (counter > 0) {
         console.log("you have applied to this Job before");
+        document.querySelector("#notice").innerHTML="You Have Applied To this Job Before You cannot Apply Again"
+        document.querySelector("#imagesrc").src=`${error}`;
+        document.querySelector("#proposal-remark").style.display="block"
+        document.querySelector("form").style.display="none"
+        document.querySelector("#joblistdiv").style.display="none";
       } else {
+
+        emailjs
+        .send(
+          process.env.REACT_APP_SERVICE_ID,
+          process.env.REACT_APP_TEMPLATE_ID,
+          templateParams,
+          process.env.REACT_APP_USER_ID
+        )
+        .then((res) => {console.log("email sent successfully" + res.status)
+        document.querySelector("#proposalinfo").innerHTML ="<p>email sent successfully</p>"
+        document.querySelector("#proposal-remark").style.display="block";
+        document.querySelector("#joblistdiv").style.display="none";
+        document.querySelector("form").style.display="none"
+        
+      }
+
+        )
+        
+        .catch((error) => console.log(error));
+
+
+
+
         var today = new Date();
         var date =
           today.getFullYear() +
@@ -174,12 +196,13 @@ const Apply = ({ data }) => {
           clientName: userData.firstname,
 
           //! line 174 and 175 are null for some reason so your push fails
-          // clientEmail: userData.email,
+          clientEmail: userData.email,
           // clientDescription: userData.description,
           clientPnumber: userData.pnumber,
           proposalDate: dateTime,
         })
           .then(() => {
+            
             console.log("Data Sent Successfully ");
           })
           .catch((error) => {
@@ -202,16 +225,15 @@ const Apply = ({ data }) => {
     onValue(starCountRefapplied, (snapshot) => {
       snapshot.forEach((element) => {
         var datas = element.val();
+        
 
-        if (
-          datas.helpNumber == sessionStorage.getItem("pnumber") &&
-          datas.clientEmail == data.email
-        ) {
+        if ( datas.helpNumber == sessionStorage.getItem("pnumber") && datas.clientEmail == data.email) {
+          counter++;
           
         } else {
         }
        
-       
+        console.log(counter)
         sessionStorage.setItem("counter", counter);
       });
     });
@@ -282,8 +304,24 @@ const Apply = ({ data }) => {
           </table>
         </div>
       </div>
+      
+      <div  id="proposal-remark">
+        <div id="container">
 
-      <div>
+        
+      <br></br>
+      <img id="imagesrc" width="60px" src={verified} alt="verified"></img>
+      <br></br>
+      <br></br>
+    <p id="notice">
+    Your Proposal has Been Submmited Successfully. 
+    
+    </p>
+    </div>
+    </div>
+   
+<br></br>
+      <div >
         <Formik
           validationSchema={schema}
           initialValues={{ job_proposal: "" }}
@@ -304,7 +342,7 @@ const Apply = ({ data }) => {
             errors,
             touched,
           }) => (
-            <form onSubmit={handleSubmit}>
+            <form id="proposaldiv" onSubmit={handleSubmit}>
               <p>write Your Proposal</p>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
                 <div>
@@ -341,9 +379,16 @@ const Apply = ({ data }) => {
               <button type="submit" id="proposalbtn">
                 Submit proposal
               </button>
+
+              <div id="proposalinfo"> </div>
             </form>
           )}
         </Formik>
+      </div>
+
+
+      <div style={{width:"70"}}>
+
       </div>
     </div>
   );
