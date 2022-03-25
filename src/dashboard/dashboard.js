@@ -95,7 +95,13 @@ class  Dashboard extends React.Component{
     constructor(){
       super()
       this.state ={
-        data:[],  
+        data:[],
+       selectedJObs:[]
+      }
+
+      function searchfunction (){
+
+        console.log("input")
       }
       
      }
@@ -105,28 +111,67 @@ class  Dashboard extends React.Component{
     
  
     componentDidMount(){
+      
       var fulljobsarray =[];
      const db = getDatabase();
      const starCountRef = ref(db, 'Fulltime_Request/');
+
+    
+
      onValue(starCountRef, (snapshot) => {
        
  
        snapshot.forEach((element)=>{ 
          fulljobsarray.push(element.val())  
        })
- 
-       console.log(fulljobsarray)
-       this.setState({data:fulljobsarray,i:fulljobsarray.length})
+       var fulljobsarray_reverse = fulljobsarray.reverse()
+       console.log(fulljobsarray.reverse)
+       this.setState({data:fulljobsarray_reverse,selectedJObs:fulljobsarray_reverse})
      })
+
+
+
     }
- 
+    
   
    render(){
  
      return(
        <div>
-         {
-           this.state.data.map((data,index)=>(
+         <div  style={{width:"300px",display:"block",textAlign:"center",margin:"0px auto"}}>
+          <div style={{width:"100%",display:"inline-flex"}}>
+
+         
+           <input id="searchinput" type="search" placeholder="search " onInput={()=>{
+             var searchparams =document.querySelector("#searchinput").value
+             
+            //  console.log(searchparams)
+            
+            var newlist = this.state.data;
+            var newlist2 =[]
+
+
+              function collectsearchresults(joblist){
+                if(joblist.firstname.toLowerCase().includes(searchparams) || joblist.state.toLowerCase().includes(searchparams.toLowerCase())){
+                  
+                  return newlist2;
+                }
+              }
+
+            const selectedJObs = newlist.filter(collectsearchresults)
+
+            this.setState({selectedJObs:selectedJObs})
+            
+           }}></input>
+           <br></br>
+           <input style={{width:"40%"}} type="submit"></input>
+           </div>
+         </div>
+
+
+<Scroll>
+{
+           this.state.selectedJObs.map((data,index)=>(
                <Joblist
                buttondata={data}
                kidsnum={data.kidsnum}
@@ -144,6 +189,10 @@ class  Dashboard extends React.Component{
      ))
            
          }
+
+</Scroll>
+
+        
         
         </div>
  
