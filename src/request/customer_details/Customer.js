@@ -39,15 +39,17 @@ function Customer(){
         var Email =document.querySelector("#customeremail").value;
         var Number =document.querySelector("#customernumber").value;
         var Address =document.querySelector("#customeraddress").value;
+        var Request_date =document.querySelector("#request_date").value;
       
         
-        if(Name!=="" && Email !=="" && Number !=="" && Address !==""){
+        if(Name!=="" && Email !=="" && Number !=="" && Address !=="" && Request_date !=="" ){
             console.log(Name,Email,Number,Address);
             
             sessionStorage.setItem("customername",Name)
             sessionStorage.setItem("customeremail",Email)
             sessionStorage.setItem("customernumber",Number)
             sessionStorage.setItem("customeraddress",Address)
+            sessionStorage.setItem("requestdate",Request_date)
             renderPaymentpage();
              
               
@@ -79,10 +81,11 @@ function Customer(){
             <form >
            
             <label>Name</label><input type="text" id="customername" required></input>
+
             <label>Email</label><input type="email" id="customeremail" required></input>
             <label>Phone Number</label><input type="Phonenumber" id="customernumber" required></input>
             <label>Full House Address</label><input type="Address" id="customeraddress" required></input>
-            
+            <label>Request Date<br></br><span style={{color:"red"}}>(which day do you want the cleaning to be done)</span></label><input type="date" id="request_date" required></input>
             
             <button style={{textAlign:"center"}} className="submit19" id="submit19" >submit</button>
             </form>
@@ -101,9 +104,11 @@ function Customer(){
   
     var amount =sessionStorage.getItem("agreedAmount")
     var email =sessionStorage.getItem("customeremail")
+    var request_date =sessionStorage.getItem("requestdate")
 
     var phonenumber =sessionStorage.getItem("customernumber")
     var name =sessionStorage.getItem("customername")
+    console.log(request_date)
 
 
 
@@ -142,7 +147,8 @@ function Customer(){
       selectedChores:sessionStorage.getItem("selectedChores"),
       apartmentType:sessionStorage.getItem("apartmenttype"),
       amountPaid:amount,
-      timeStamp:dateTime
+      timeStamp:dateTime,
+      Request_date:request_date
 
     }).then(()=>{
       
