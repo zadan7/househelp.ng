@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import "./form.css";
 import Cdashboard from './dashboard/Cdashboard';
+import Administrator from "./Administrator/Administrator.js"
 import {
   BrowserRouter as Router,
   Switch,
@@ -65,6 +66,10 @@ import { getDatabase, ref ,push ,onValue} from "firebase/database";
             </Route>
             <Route path="/guarantor">
               <Guarantordetails />
+            </Route>
+
+            <Route path="/Admin">
+              <Administrator />
             </Route>
             <Route path="/Payment">
               <PaymentPage />

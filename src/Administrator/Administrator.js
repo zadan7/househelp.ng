@@ -1,10 +1,12 @@
 
 import React from "react";
 import Header from "../Header";
-import "./dashboard.css";
-import Joblist from "./Joblist";
-import Scroll from "./Scroll";
+import "./adminstrator.css";
+import {Fulltime_Request,Users,PartimeRequest, Guarantors,Applied_jobs} from "./List";
+
+// import Scroll from "./Scroll";
 import {getDatabase,ref,onValue} from "firebase/database";
+import { Partime } from "../request/Request";
 
 
 
@@ -15,7 +17,7 @@ import {getDatabase,ref,onValue} from "firebase/database";
 
 
 
-class  Dashboard extends React.Component{
+class  Administrator extends React.Component{
   constructor(){
 
         super();
@@ -32,6 +34,7 @@ class  Dashboard extends React.Component{
     componentDidMount(){
       var view = document.querySelector("#name")
       function load (){
+        sessionStorage.setItem("name","sadam")
         if(sessionStorage.getItem("name")=="" || sessionStorage.getItem("name")==null ){
           window.location.href="/Login";
         }
@@ -95,8 +98,13 @@ class  Dashboard extends React.Component{
     constructor(){
       super()
       this.state ={
-        data:[],
-       selectedJObs:[]
+      Fulltime_Request:[],
+      selectedJObs:[],
+      applied_jobs:[],
+      customers:[],
+      guarantors:[],
+      partimeRequest:[],
+      users:[]
       }
 
       function searchfunction (){
@@ -113,23 +121,75 @@ class  Dashboard extends React.Component{
     componentDidMount(){
       
       var fulljobsarray =[];
+      var applied_jobsarray=[];
+      var customersarray=[];
+      var guarantorsarray=[];
+      var partimearray =[];
+      var usersarray=[];
+
      const db = getDatabase();
-     const starCountRef = ref(db, 'Fulltime_Request/');
+     const starCountRefF = ref(db, 'Fulltime_Request/');
 
-    
+     const starCountRefA = ref(db, 'applied_jobs/');
+     const starCountRefC = ref(db, 'customers/');
+     const starCountRefG = ref(db, 'guarantors/');
+     const starCountRefP = ref(db, 'partimeRequest/');
+     const starCountRefU = ref(db, 'users/');
 
-     onValue(starCountRef, (snapshot) => {
-       
- 
+  
+     onValue(starCountRefF, (snapshot) => {
        snapshot.forEach((element)=>{ 
          fulljobsarray.push(element.val())  
        })
-       var fulljobsarray_reverse = fulljobsarray.reverse()
-       console.log(fulljobsarray.reverse)
-       this.setState({data:fulljobsarray_reverse,selectedJObs:fulljobsarray_reverse})
-     })
-
-
+      
+      })
+      onValue(starCountRefA, (snapshot) => {
+        snapshot.forEach((element)=>{ 
+          applied_jobsarray.push(element.val())  
+        })
+      
+       })
+       onValue(starCountRefC, (snapshot) => {
+        snapshot.forEach((element)=>{ 
+          customersarray.push(element.val())  
+        })
+       
+      
+       })
+       onValue(starCountRefG, (snapshot) => {
+        snapshot.forEach((element)=>{ 
+          guarantorsarray.push(element.val())  
+        })
+       
+      
+       })
+       onValue(starCountRefP, (snapshot) => {
+        snapshot.forEach((element)=>{ 
+          partimearray.push(element.val())  
+        })
+       
+       })
+       onValue(starCountRefU, (snapshot) => {
+        snapshot.forEach((element)=>{ 
+          usersarray.push(element.val())  
+        })
+       
+       
+       })
+    
+     
+     var fulljobsarray_reverse = fulljobsarray.reverse()
+     this.setState({
+       selectedJObs:fulljobsarray_reverse,
+       Fulltime_Request:fulljobsarray,
+       applied_jobs:applied_jobsarray,
+       customers:customersarray,
+       guarantors:guarantorsarray,
+      partimeRequest:partimearray,
+      users:usersarray
+    })
+    
+    
 
     }
     
@@ -147,7 +207,7 @@ class  Dashboard extends React.Component{
              
             //  console.log(searchparams)
             
-            var newlist = this.state.data;
+            var newlist = this.state.Fulltime_Request;
             var newlist2 =[]
 
 
@@ -171,8 +231,28 @@ class  Dashboard extends React.Component{
 
 {/* <Scroll> */}
 {
+           this.state.partimeRequest.map((data,index)=>(
+               <PartimeRequest
+               buttondata={data}
+               index={index}
+               /> 
+     ))
+           
+         }
+
+{
+           this.state.applied_jobs.map((data,index)=>(
+               <Applied_jobs
+               buttondata={data}
+               index={index}
+               /> 
+     ))
+           
+         }
+
+{
            this.state.selectedJObs.map((data,index)=>(
-               <Joblist
+               <Fulltime_Request
                buttondata={data}
                kidsnum={data.kidsnum}
                index={index}
@@ -190,6 +270,28 @@ class  Dashboard extends React.Component{
            
          }
 
+{
+           this.state.users.map((data,index)=>(
+               <Users
+               buttondata={data}
+               /> 
+     ))
+           
+         }
+
+
+
+{
+           this.state.guarantors.map((data,index)=>(
+               <Guarantors
+               buttondata={data}
+               index={index}
+               /> 
+     ))
+           
+         }
+
+
 {/* </Scroll> */}
 
         
@@ -206,4 +308,4 @@ class  Dashboard extends React.Component{
  }
  
 
-  export default Dashboard;
+  export default Administrator;

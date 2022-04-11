@@ -152,7 +152,7 @@ function Customer(){
 
     }).then(()=>{
       
-
+      console.log("posted data successfully")
       
       
     }).catch((error)=>{
@@ -183,9 +183,30 @@ function Customer(){
 
           <button onClick={()=>{
 
+
+const db = getDatabase();
+  var today = new Date();
+  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  var dateTime = date+' '+time;
+push(ref(db, '/partimeRequest'), {
+customerName:sessionStorage.getItem("customername"),
+customerNumber:sessionStorage.getItem("customernumber"),
+customerAddress:sessionStorage.getItem("customeraddress"),
+customerEmail:sessionStorage.getItem("customeremail"),
+selectedChores:sessionStorage.getItem("selectedChores"),
+apartmentType:sessionStorage.getItem("apartmenttype"),
+amountPaid:amount,
+timeStamp:dateTime,
+Request_date:request_date
+})
+
        handleFlutterPayment({
         callback: (response) => {
            console.log(response);
+           postdata();
+           
+
            if(response.status=="successful"){
             const db = getDatabase();
            postdata();
