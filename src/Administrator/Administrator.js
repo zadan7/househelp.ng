@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../Header";
 import "./adminstrator.css";
+import reactDom from "react-dom";
 import {
   Fulltime_Request,
   Users,
@@ -8,11 +9,88 @@ import {
   Guarantors,
   Applied_jobs,
 } from "./List";
-
+import { CSSTransition } from "react-transition-group";
 // import Scroll from "./Scroll";
 import { getDatabase, ref, onValue } from "firebase/database";
 import { Partime } from "../request/Request";
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
+
+const getDatabasedatausers = (email, password) => {
+  if (email == "househelps@gmail.com" && password == "Barcode1jr.") {
+    renderAdmin();
+  } else {
+    document.querySelector("#data").innerHTML =
+      "incorrect username && password";
+  }
+};
+
+const getformdata2 = (e) => {
+  var email = document.querySelector("#email").value;
+  var password = document.querySelector("#password").value;
+
+  console.log(email, password);
+
+  if (email !== "" && password !== "") {
+    document.querySelector("#data").innerHTML = "waiting For Network";
+    getDatabasedatausers(email, password);
+
+    document.querySelector("#email").value = "";
+    document.querySelector("#password").value = "";
+  } else {
+    document.querySelector("#data").innerHTML =
+      "incorrect username && password";
+  }
+};
+
+class LoginA extends React.Component {
+  componentDidMount() {
+    var span = document.querySelector(".spnn").addEventListener("click", () => {
+      // renderSignup();
+    });
+
+    var logologo = document.querySelector("#logo-logo");
+    logologo.style.display = "none";
+  }
+
+  render() {
+    return (
+      <div className="div">
+        <CSSTransition
+          timeout={500}
+          transitionname="carousel"
+          transitionappear="true">
+          <div>
+            <h1 style={{ textAlign: "center" }}>Login</h1>
+            <form name="Login">
+              <p>Email</p>
+              <input type="email" id="email" required></input>
+
+              <p>Password</p>
+              <input type="password" id="password" required></input>
+
+              <input
+                type="submit"
+                value="Submit"
+                id="submit_button_l"
+                onClick={getformdata2}
+                style={{}}></input>
+              <div id="data" style={{ color: "red" }}>
+                {" "}
+              </div>
+
+              <div>
+                <span className="spnn">
+                  Don't have an Account , {" " + "   " + " "}{" "}
+                  <span style={{ color: "green" }}> Signup now</span>
+                </span>
+              </div>
+            </form>
+          </div>
+        </CSSTransition>
+      </div>
+    );
+  }
+}
 
 class Administrator extends React.Component {
   constructor() {
@@ -461,4 +539,14 @@ const Donate = () => {
   );
 };
 
-export { Administrator, Donate };
+function renderAdmin() {
+  reactDom.render(
+    <React.StrictMode>
+      <Header />
+      <Administrator />
+    </React.StrictMode>,
+    document.querySelector("#root")
+  );
+}
+
+export { Administrator, Donate, LoginA };

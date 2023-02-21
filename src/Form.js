@@ -1,7 +1,11 @@
 import { initializeApp } from "firebase/app";
 import "./form.css";
 import Cdashboard from "./dashboard/Cdashboard";
-import { Administrator, Donate } from "./Administrator/Administrator.js";
+import {
+  Administrator,
+  Donate,
+  LoginA,
+} from "./Administrator/Administrator.js";
 import {
   BrowserRouter as Router,
   Switch,
@@ -65,7 +69,7 @@ function App() {
           </Route>
 
           <Route path="/Admin">
-            <Administrator />
+            <LoginA />
           </Route>
           <Route path="/location">
             <Location />
