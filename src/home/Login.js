@@ -3,7 +3,7 @@ import { getDatabase, ref, push, onValue, set } from "firebase/database";
 import Header from "../Header";
 import React from "react";
 import reactDom from "react-dom";
-import Signup from "./Signup";
+import {Signup} from "./Signup";
 import Home from "./Home";
 import "./login.css";
 import Cdashboard from "../dashboard/Cdashboard";

@@ -21,7 +21,7 @@ import {
 import { Formik } from "formik";
 import * as yup from "yup";
 import emailjs from "@emailjs/browser";
-import verified from "../imgs/check.png"
+import verified from "../imgs/check.png";
 import error from "../imgs/error.png";
 
 //! remove all unused variables as well the console is too dirty and confusing
@@ -64,13 +64,52 @@ const Joblist = ({
           }}
           id=""
           className="job-apply-btn"
-          style={{ width: "100%", margin: "0" }}
-        >
+          style={{ width: "100%", margin: "0" }}>
           Apply
         </button>
       </div>
-
       <div id="card-details">
+        <table>
+          <th></th>
+          <tr>
+            <td>FullName:</td>
+            <td>{firstname + "  " + " " + lastname + " " + " "}</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>{buttondata.middlename}</td>
+          </tr>
+          <tr>
+            <td>address</td>
+            <td>{address + "  " + " "}</td>
+          </tr>
+
+          <tr>
+            <td>Jobtype</td>
+            <td>{buttondata.email}</td>
+          </tr>
+          <tr>
+            <td>phone number</td>
+            <td>{pnumber}</td>
+          </tr>
+          <tr>
+            <td>request date</td>
+            <td>{buttondata.description}</td>
+          </tr>
+          <tr>
+            <td>Description</td>
+            <td>{buttondata.kidsnum}</td>
+          </tr>
+
+          <tr>
+            <td>image</td>
+            <td>
+              <img style={{ maxWidth: "200px" }} src={buttondata.jobtype}></img>
+            </td>
+          </tr>
+        </table>
+      </div>
+      {/* <div id="card-details">
         <table>
           <th></th>
           <tr>
@@ -105,7 +144,7 @@ const Joblist = ({
             <td>{kidsnum}</td>
           </tr>
         </table>
-      </div>
+      </div> */}
     </div>
   );
 };
@@ -139,39 +178,33 @@ const Apply = ({ data }) => {
       help_email: sessionStorage.getItem("email"),
     };
 
-   
-
     function checkifuserhasappliedbefore(counter) {
       if (counter > 0) {
         console.log("you have applied to this Job before");
-        document.querySelector("#notice").innerHTML="You Have Applied To this Job Before You cannot Apply Again"
-        document.querySelector("#imagesrc").src=`${error}`;
-        document.querySelector("#proposal-remark").style.display="block"
-        document.querySelector("form").style.display="none"
-        document.querySelector("#joblistdiv").style.display="none";
+        document.querySelector("#notice").innerHTML =
+          "You Have Applied To this Job Before You cannot Apply Again";
+        document.querySelector("#imagesrc").src = `${error}`;
+        document.querySelector("#proposal-remark").style.display = "block";
+        document.querySelector("form").style.display = "none";
+        document.querySelector("#joblistdiv").style.display = "none";
       } else {
-
         emailjs
-        .send(
-          process.env.REACT_APP_SERVICE_ID,
-          process.env.REACT_APP_TEMPLATE_ID,
-          templateParams,
-          process.env.REACT_APP_USER_ID
-        )
-        .then((res) => {console.log("email sent successfully" + res.status)
-        document.querySelector("#proposalinfo").innerHTML ="<p>email sent successfully</p>"
-        document.querySelector("#proposal-remark").style.display="block";
-        document.querySelector("#joblistdiv").style.display="none";
-        document.querySelector("form").style.display="none"
-        
-      }
+          .send(
+            process.env.REACT_APP_SERVICE_ID,
+            process.env.REACT_APP_TEMPLATE_ID,
+            templateParams,
+            process.env.REACT_APP_USER_ID
+          )
+          .then((res) => {
+            console.log("email sent successfully" + res.status);
+            document.querySelector("#proposalinfo").innerHTML =
+              "<p>email sent successfully</p>";
+            document.querySelector("#proposal-remark").style.display = "block";
+            document.querySelector("#joblistdiv").style.display = "none";
+            document.querySelector("form").style.display = "none";
+          })
 
-        )
-        
-        .catch((error) => console.log(error));
-
-
-
+          .catch((error) => console.log(error));
 
         var today = new Date();
         var date =
@@ -202,12 +235,11 @@ const Apply = ({ data }) => {
           proposalDate: dateTime,
         })
           .then(() => {
-            
             console.log("Data Sent Successfully ");
           })
           .catch((error) => {
             //! you caught the error object but did not do anything with it
-            console.log("data wasnt sent " , error)
+            console.log("data wasnt sent ", error);
           });
       }
     }
@@ -225,15 +257,16 @@ const Apply = ({ data }) => {
     onValue(starCountRefapplied, (snapshot) => {
       snapshot.forEach((element) => {
         var datas = element.val();
-        
 
-        if ( datas.helpNumber == sessionStorage.getItem("pnumber") && datas.clientEmail == data.email) {
+        if (
+          datas.helpNumber == sessionStorage.getItem("pnumber") &&
+          datas.clientEmail == data.email
+        ) {
           counter++;
-          
         } else {
         }
-       
-        console.log(counter)
+
+        console.log(counter);
         sessionStorage.setItem("counter", counter);
       });
     });
@@ -248,16 +281,14 @@ const Apply = ({ data }) => {
           marginLeft: "auto",
           marginRight: "auto",
         }}
-        onClick={renderDashboard}
-      >
+        onClick={renderDashboard}>
         <img src={leftarrow} style={{ width: "100%", color: "green" }}></img>
       </div>
 
       <div id="joblistdiv" style={jobliststyle}>
         <div
           id="cardheader"
-          style={{ width: "100%", color: "green", gridTemplateColumns: "1fr" }}
-        >
+          style={{ width: "100%", color: "green", gridTemplateColumns: "1fr" }}>
           <h2 style={{ textAlign: "left" }}>State: {data.state}</h2>
         </div>
 
@@ -304,24 +335,19 @@ const Apply = ({ data }) => {
           </table>
         </div>
       </div>
-      
-      <div  id="proposal-remark">
-        <div id="container">
 
-        
+      <div id="proposal-remark">
+        <div id="container">
+          <br></br>
+          <img id="imagesrc" width="60px" src={verified} alt="verified"></img>
+          <br></br>
+          <br></br>
+          <p id="notice">Your Proposal has Been Submmited Successfully.</p>
+        </div>
+      </div>
+
       <br></br>
-      <img id="imagesrc" width="60px" src={verified} alt="verified"></img>
-      <br></br>
-      <br></br>
-    <p id="notice">
-    Your Proposal has Been Submmited Successfully. 
-    
-    </p>
-    </div>
-    </div>
-   
-<br></br>
-      <div >
+      <div>
         <Formik
           validationSchema={schema}
           initialValues={{ job_proposal: "" }}
@@ -332,8 +358,7 @@ const Apply = ({ data }) => {
                 "name"
               )} ${sessionStorage.getItem("lastname")}`,
             })
-          }
-        >
+          }>
           {({
             values,
             handleBlur,
@@ -386,10 +411,7 @@ const Apply = ({ data }) => {
         </Formik>
       </div>
 
-
-      <div style={{width:"70"}}>
-
-      </div>
+      <div style={{ width: "70" }}></div>
     </div>
   );
 };
