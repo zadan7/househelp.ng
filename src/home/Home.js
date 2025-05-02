@@ -42,7 +42,7 @@ class Home extends React.Component {
         
             
             <div id="container" >
-                  <h1>Welcome !</h1>
+                  <h1>Welcome ! jkjkjksjkjksjkd</h1>
                 <button id="btn-1" onClick={renderSignup}>Register As a Househelp</button>
                   {/* <hr style={{width: "65%", marginLeft: "auto" , marginRight: "auto" ,marginBottom:"5%",color:"eee"}}></hr> */}
                   <p style={{fontsize: "1.5em"}}>Or</p>

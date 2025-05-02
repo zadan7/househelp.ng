@@ -288,6 +288,8 @@ function Signup() {
           <input type="email" id="email" required></input>
           <p>Password</p>
           <input type="password" id="password" required></input>
+          <p> confirm Password</p>
+          <input type="password" id="cpassword" required></input>
           <p></p>
           <button value="Submit" id="signup_submit_button">
             Submit
