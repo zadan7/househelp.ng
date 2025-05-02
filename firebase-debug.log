@@ -1,0 +1,202 @@
+[debug] [2025-04-17T14:31:00.871Z] ----------------------------------------------------------------------
+[debug] [2025-04-17T14:31:00.876Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\HP\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-04-17T14:31:00.876Z] CLI Version:   14.2.0
+[debug] [2025-04-17T14:31:00.876Z] Platform:      win32
+[debug] [2025-04-17T14:31:00.877Z] Node Version:  v20.16.0
+[debug] [2025-04-17T14:31:00.877Z] Time:          Thu Apr 17 2025 15:31:00 GMT+0100 (West Africa Standard Time)
+[debug] [2025-04-17T14:31:00.877Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-04-17T14:31:00.891Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-04-17T14:31:00.891Z] > authorizing via signed-in user (househelporg@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\HP\Desktop\househelp.ng
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-04-17T14:32:10.037Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:32:10.037Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:32:10.040Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2025-04-17T14:32:11.343Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2025-04-17T14:32:11.344Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project househelporg (househelporg) 
+[info] 
+=== Dataconnect Setup
+[debug] [2025-04-17T14:32:16.898Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:32:16.899Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:32:16.899Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/househelporg/billingInfo [none]
+[debug] [2025-04-17T14:32:17.819Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/househelporg/billingInfo 200
+[debug] [2025-04-17T14:32:17.820Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/househelporg/billingInfo {"name":"projects/househelporg/billingInfo","projectId":"househelporg","billingAccountName":"","billingEnabled":false}
+[info] i  dataconnect: ensuring required API sqladmin.googleapis.com is enabled... 
+[debug] [2025-04-17T14:32:17.823Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:32:17.824Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:32:17.825Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/househelporg/services/sqladmin.googleapis.com [none]
+[debug] [2025-04-17T14:32:17.826Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/househelporg/services/sqladmin.googleapis.com x-goog-quota-user=projects/househelporg
+[debug] [2025-04-17T14:32:19.372Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/househelporg/services/sqladmin.googleapis.com 200
+[debug] [2025-04-17T14:32:19.376Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/househelporg/services/sqladmin.googleapis.com [omitted]
+[warn] !  dataconnect: missing required API sqladmin.googleapis.com. Enabling now... 
+[debug] [2025-04-17T14:32:19.386Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:32:19.387Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:32:19.388Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/househelporg/services/sqladmin.googleapis.com:enable [none]
+[debug] [2025-04-17T14:32:19.388Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/househelporg/services/sqladmin.googleapis.com:enable x-goog-quota-user=projects/househelporg
+[debug] [2025-04-17T14:32:20.631Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/househelporg/services/sqladmin.googleapis.com:enable 200
+[debug] [2025-04-17T14:32:20.632Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/househelporg/services/sqladmin.googleapis.com:enable [omitted]
+[debug] [2025-04-17T14:32:30.640Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:32:30.641Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:32:30.641Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/househelporg/services/sqladmin.googleapis.com [none]
+[debug] [2025-04-17T14:32:30.642Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/househelporg/services/sqladmin.googleapis.com x-goog-quota-user=projects/househelporg
+[debug] [2025-04-17T14:32:31.978Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/househelporg/services/sqladmin.googleapis.com 200
+[debug] [2025-04-17T14:32:31.978Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/househelporg/services/sqladmin.googleapis.com [omitted]
+[info] +  dataconnect: required API sqladmin.googleapis.com is enabled 
+[info] +  Wrote dataconnect\dataconnect.yaml 
+[info] +  Wrote dataconnect\schema\schema.gql 
+[info] +  Wrote dataconnect\connector\connector.yaml 
+[info] +  Wrote dataconnect\connector\queries.gql 
+[info] +  Wrote dataconnect\connector\mutations.gql 
+[info] +  Detected WEB app in directory C:\Users\HP\Desktop\househelp.ng 
+[info] i  Detected react app. Enabling react generated SDKs. 
+[info] i  Writing your new SDK configuration to C:\Users\HP\Desktop\househelp.ng\dataconnect\connector/connector.yaml 
+[info] i  Skipping write of dataconnect\connector\connector.yaml 
+[info] i  dataconnect: downloading dataconnect-emulator-2.2.0.exe... {"metadata":{"emulator":{"name":"dataconnect"},"message":"downloading dataconnect-emulator-2.2.0.exe..."}}
+[debug] [2025-04-17T14:33:09.061Z] >>> [apiv2][query] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-v2.2.0 
+[debug] [2025-04-17T14:33:09.848Z] <<< [apiv2][status] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-v2.2.0 200
+[debug] [2025-04-17T14:33:09.848Z] <<< [apiv2][body] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-v2.2.0 [stream]
+[debug] [2025-04-17T14:33:16.298Z] defaultcredentials: writing to file C:\Users\HP\AppData\Roaming\firebase\househelporg_gmail_com_application_default_credentials.json
+[debug] [2025-04-17T14:33:16.308Z] Setting GAC to C:\Users\HP\AppData\Roaming\firebase\househelporg_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"dataconnect"},"message":"Setting GAC to C:\\Users\\HP\\AppData\\Roaming\\firebase\\househelporg_gmail_com_application_default_credentials.json"}}
+[info] I0417 15:33:17.064764   12808 generate.go:40] Generated all sources. Writing them to disk...
+
+[info] i  Generated SDK code for default 
+[info] i  Visit https://firebase.google.com/docs/data-connect/web-sdk#react for more information on how to set up React Generated SDKs for Firebase Data Connect 
+[info] i  Run `npm i --save @angular/fire @tanstack-query-firebase/angular @tanstack/angular-query-experimental` to install angular sdk dependencies.
+Visit https://github.com/invertase/tanstack-query-firebase/tree/main/packages/angular for more information on how to set up Angular Generated SDKs for Firebase Data Connect 
+[info] +  If you'd like to add more generated SDKs to your app your later, run firebase init dataconnect:sdk again 
+[info] i  If you'd like to provision a CloudSQL Postgres instance on the Firebase Data Connect no-cost trial:
+1. Please upgrade to the pay-as-you-go (Blaze) billing plan. Visit the following page:
+     https://console.firebase.google.com/project/househelporg/usage/details
+2. Run firebase init dataconnect again to configure the Cloud SQL instance.
+3. Run firebase deploy --only dataconnect to deploy your Data Connect service. 
+[info] 
+=== Firestore Setup
+[debug] [2025-04-17T14:33:17.078Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:33:17.078Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:33:17.079Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/househelporg/services/firestore.googleapis.com [none]
+[debug] [2025-04-17T14:33:17.080Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/househelporg/services/firestore.googleapis.com x-goog-quota-user=projects/househelporg
+[debug] [2025-04-17T14:33:18.442Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/househelporg/services/firestore.googleapis.com 200
+[debug] [2025-04-17T14:33:18.443Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/househelporg/services/firestore.googleapis.com [omitted]
+[debug] [2025-04-17T14:33:18.447Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:33:18.447Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:33:18.447Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/househelporg/databases/(default) [none]
+[debug] [2025-04-17T14:33:19.832Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/househelporg/databases/(default) 200
+[debug] [2025-04-17T14:33:19.833Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/househelporg/databases/(default) {"name":"projects/househelporg/databases/(default)","uid":"5d347bfb-91da-43f4-8237-1df5ebe681a7","createTime":"2024-01-04T04:58:55.389063Z","updateTime":"2024-01-04T04:58:55.389063Z","locationId":"nam5","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2025-04-17T13:33:20.372567Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"s","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","freeTier":true,"etag":"IJ+wocSk34wDMIPoxci0qYwD"}
+[debug] [2025-04-17T14:33:19.833Z] database_type: FIRESTORE_NATIVE
+[debug] [2025-04-17T14:33:19.833Z] database_type: FIRESTORE_NATIVE
+[debug] [2025-04-17T14:33:19.835Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-04-17T14:33:19.837Z] > authorizing via signed-in user (househelporg@gmail.com)
+[debug] [2025-04-17T14:33:19.837Z] [iam] checking project househelporg for permissions ["firebase.projects.get"]
+[debug] [2025-04-17T14:33:19.840Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:33:19.840Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:33:19.842Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/househelporg:testIamPermissions [none]
+[debug] [2025-04-17T14:33:19.843Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/househelporg:testIamPermissions x-goog-quota-user=projects/househelporg
+[debug] [2025-04-17T14:33:19.845Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/househelporg:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-04-17T14:33:20.960Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/househelporg:testIamPermissions 200
+[debug] [2025-04-17T14:33:20.961Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/househelporg:testIamPermissions {"permissions":["firebase.projects.get"]}
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2025-04-17T14:33:31.975Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:33:31.975Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:33:31.975Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/househelporg/releases pageSize=10&pageToken=
+[debug] [2025-04-17T14:33:33.408Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/househelporg/releases 200
+[debug] [2025-04-17T14:33:33.409Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/househelporg/releases {"releases":[{"name":"projects/househelporg/releases/cloud.firestore","rulesetName":"projects/househelporg/rulesets/80025d5e-5a20-4338-8095-af9216b64ba8","createTime":"2024-01-04T04:59:02.454921Z","updateTime":"2024-02-03T08:31:25.528656Z"},{"name":"projects/househelporg/releases/firebase.storage/househelporg.appspot.com","rulesetName":"projects/househelporg/rulesets/7ae97b4a-ca71-465c-a941-947f179828be","createTime":"2024-02-02T10:16:43.095454Z","updateTime":"2024-02-07T11:44:01.851152Z"}]}
+[debug] [2025-04-17T14:33:33.524Z] Found ruleset: projects/househelporg/rulesets/80025d5e-5a20-4338-8095-af9216b64ba8
+[debug] [2025-04-17T14:33:33.525Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:33:33.525Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:33:33.525Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/househelporg/rulesets/80025d5e-5a20-4338-8095-af9216b64ba8 [none]
+[debug] [2025-04-17T14:33:34.008Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/househelporg/rulesets/80025d5e-5a20-4338-8095-af9216b64ba8 200
+[debug] [2025-04-17T14:33:34.009Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/househelporg/rulesets/80025d5e-5a20-4338-8095-af9216b64ba8 [omitted]
+[info] 
+[info] Firestore indexes allow you to perform complex queries while
+[info] maintaining performance that scales with the size of the result
+[info] set. You can keep index definitions in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2025-04-17T14:33:37.596Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:33:37.596Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:33:37.597Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:33:37.597Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:33:37.597Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/househelporg/databases/(default)/collectionGroups/-/indexes [none]
+[debug] [2025-04-17T14:33:37.600Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/househelporg/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* [none]
+[debug] [2025-04-17T14:33:38.825Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/househelporg/databases/(default)/collectionGroups/-/indexes 200
+[debug] [2025-04-17T14:33:38.827Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/househelporg/databases/(default)/collectionGroups/-/indexes {}
+[debug] [2025-04-17T14:33:38.836Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/househelporg/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* 200
+[debug] [2025-04-17T14:33:38.837Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/househelporg/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* {"fields":[{"name":"projects/househelporg/databases/(default)/collectionGroups/__default__/fields/*","indexConfig":{"indexes":[{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"ASCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"DESCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","arrayConfig":"CONTAINS"}],"state":"READY"}]}}]}
+[info] 
+=== Apphosting Setup
+[debug] [2025-04-17T14:33:38.855Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:33:38.855Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:33:38.856Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/househelporg/billingInfo [none]
+[debug] [2025-04-17T14:33:39.752Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/househelporg/billingInfo 200
+[debug] [2025-04-17T14:33:39.753Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/househelporg/billingInfo {"name":"projects/househelporg/billingInfo","projectId":"househelporg","billingAccountName":"","billingEnabled":false}
+[info] i  Writing default settings to apphosting.yaml... 
+[info] +  Wrote apphosting.yaml 
+[info] +  Create a new App Hosting backend with `firebase apphosting:backends:create` 
+[info] 
+=== Hosting Setup
+[debug] [2025-04-17T14:33:39.814Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:33:39.815Z] Checked if tokens are valid: true, expires at: 1744903835082
+[debug] [2025-04-17T14:33:39.815Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/househelporg [none]
+[debug] [2025-04-17T14:33:40.552Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/househelporg 200
+[debug] [2025-04-17T14:33:40.553Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/househelporg {"projectId":"househelporg","projectNumber":"354870677540","displayName":"househelporg","name":"projects/househelporg","resources":{"hostingSite":"househelporg","locationId":"us-central"},"state":"ACTIVE","etag":"1_cc49969d-8186-4bbd-b3cc-baa69bb155ee"}
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[info] +  Wrote public/404.html 
+[debug] [2025-04-17T14:33:53.123Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/releases.json [none]
+[debug] [2025-04-17T14:33:54.076Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/releases.json 200
+[debug] [2025-04-17T14:33:54.077Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/releases.json {"current":{"version":"11.6.0","browserURL":"https://www.gstatic.com/firebasejs/11.6.0/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/11.6.0/firebase.tgz"},"live":{"version":"11.6","browserURL":"https://www.gstatic.com/firebasejs/live/11.6/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/live/11.6/firebase.tgz"},"components":{"analytics":"https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js","app":"https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js","app-check":"https://www.gstatic.com/firebasejs/11.6.0/firebase-app-check.js","auth":"https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js","auth/cordova":"https://www.gstatic.com/firebasejs/11.6.0/firebase-auth/cordova.js","auth/web-extension":"https://www.gstatic.com/firebasejs/11.6.0/firebase-auth/web-extension.js","functions":"https://www.gstatic.com/firebasejs/11.6.0/firebase-functions.js","firestore":"https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js","firestore/lite":"https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore/lite.js","installations":"https://www.gstatic.com/firebasejs/11.6.0/firebase-installations.js","storage":"https://www.gstatic.com/firebasejs/11.6.0/firebase-storage.js","performance":"https://www.gstatic.com/firebasejs/11.6.0/firebase-performance.js","remote-config":"https://www.gstatic.com/firebasejs/11.6.0/firebase-remote-config.js","messaging":"https://www.gstatic.com/firebasejs/11.6.0/firebase-messaging.js","messaging/sw":"https://www.gstatic.com/firebasejs/11.6.0/firebase-messaging/sw.js","database":"https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js","vertexai":"https://www.gstatic.com/firebasejs/11.6.0/firebase-vertexai.js","data-connect":"https://www.gstatic.com/firebasejs/11.6.0/firebase-data-connect.js","firestore.memory":"https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.memory.js"}}
+[info] i  Skipping write of public/index.html 
+[info] 
+[info] i  Detected a .git folder at C:\Users\HP\Desktop\househelp.ng 
+[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=798620115&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+[info] 
+[info] Waiting for authentication...
+[debug] [2025-04-17T14:34:32.924Z] ----------------------------------------------------------------------
+[debug] [2025-04-17T14:34:32.927Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\HP\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-04-17T14:34:32.927Z] CLI Version:   14.2.0
+[debug] [2025-04-17T14:34:32.928Z] Platform:      win32
+[debug] [2025-04-17T14:34:32.928Z] Node Version:  v20.16.0
+[debug] [2025-04-17T14:34:32.928Z] Time:          Thu Apr 17 2025 15:34:32 GMT+0100 (West Africa Standard Time)
+[debug] [2025-04-17T14:34:32.928Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-04-17T14:34:32.938Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-04-17T14:34:32.939Z] > authorizing via signed-in user (househelporg@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\HP\Desktop\househelp.ng
+

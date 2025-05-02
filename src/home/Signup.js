@@ -14,13 +14,13 @@ import { getStorage, ref as ref2 } from "firebase/storage";
 import { uploadBytes, getDownloadURL } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBk-m6q2o1dKuggqoNxjoKZHmXeMSHhjsA",
-  authDomain: "PROJECT_ID.firebaseapp.com",
-  databaseURL: "https://househelps2-default-rtdb.firebaseio.com/",
-  projectId: "househelps2",
-  storageBucket: "househelps2.appspot.com",
-  messagingSenderId: "SENDER_ID",
-  appId: "APP_ID",
+  apiKey: "AIzaSyB_Xm0x7Xz4UqRh-q4ftiIx4-D8AjLpePE",
+  authDomain: "househelporg.firebaseapp.com",
+  projectId: "househelporg",
+  storageBucket: "househelporg.appspot.com",
+  messagingSenderId: "354870677540",
+  appId: "1:354870677540:web:718bf40b9ec96b6840c8b1",
+  measurementId: "G-SLELK741QB",
 };
 
 function Signup() {
